@@ -7,13 +7,13 @@ repos:
         stages: [commit-msg]
         always_run: true
         additional_dependencies: ['@commitlint/config-conventional']
-  # - repo: https://github.com/pre-commit/pre-commit-hooks
-  #   rev: v4.0.1
-  #   hooks:
-  #     - id: trailing-whitespace
-  #       args: [--markdown-linebreak-ext=md]
-  #       stages: [commit]
-  #     - id: check-case-conflict
-  #       stages: [commit]
-  #     - id: end-of-file-fixer
-  #       stages: [commit]
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v4.0.1
+    hooks:
+      - id: trailing-whitespace
+        args: [--markdown-linebreak-ext=md]
+        stages: [commit]
+      - id: check-case-conflict
+        stages: [commit]
+      - id: end-of-file-fixer
+        stages: [commit]
