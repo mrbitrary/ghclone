@@ -13,8 +13,5 @@ repos:
     hooks:
       - id: trailing-whitespace
         args: [--markdown-linebreak-ext=md]
-        stages: [commit]
       - id: check-case-conflict
-        stages: [commit]
       - id: end-of-file-fixer
-        stages: [commit]
