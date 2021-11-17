@@ -31,3 +31,5 @@ else
   echo "Current active directory is $(pwd)"
   $SHELL
 fi
+
+unset TARGET_DIR UPSTREAM
