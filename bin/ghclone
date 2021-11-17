@@ -1,0 +1,33 @@
+#!/bin/sh
+
+if [[ -z "$1" ]] || [[ "$1" == -h ]] || [[ "$1" == --help ]] || [[ -z "$2" ]]; then
+  echo "Usage: ghclone <repository_name> <origin> [<upstream>] [<target_dir>]"
+else
+  if [[ -z "$4" ]]; then
+    if [[ -z "$3" ]]; then
+      TARGET_DIR="$1"
+    elif [[ "$3" =~ [/\~] ]]; then
+      TARGET_DIR="$3"
+    else
+      TARGET_DIR="$1"
+      UPSTREAM="$3"
+    fi
+  else
+    UPSTREAM="$3"
+    TARGET_DIR="$4"
+  fi
+
+  echo "Cloning $2/$1"
+  git clone git@github.com:"$2"/"$1".git $TARGET_DIR \
+  && echo "Moving active directory into $TARGET_DIR" \
+  && cd $TARGET_DIR
+
+  if [[ $UPSTREAM != '' ]]; then
+    echo "Configuring remote upstream of $3/$1"
+    git remote add upstream git@github.com:"$3"/"$1".git
+    git fetch --all --prune --prune-tags --no-tags
+  fi
+
+  echo "Current active directory is $(pwd)"
+  $SHELL
+fi
