@@ -1,3 +1,4 @@
+fail_fast: true
 repos:
   # - repo: https://github.com/pre-commit/pre-commit-hooks
   #   rev: v4.0.1
@@ -14,4 +15,5 @@ repos:
     hooks:
       - id: commitlint
         stages: [commit-msg]
+        always_run: true
         additional_dependencies: ['@commitlint/config-conventional']
